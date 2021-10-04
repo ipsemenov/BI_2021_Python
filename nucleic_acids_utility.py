@@ -1,6 +1,10 @@
+available_commands = {'exit', 'transcribe', 'reverse', 'complement', 'reverse complement'}
+complement_dict_dna = {'A' : 'T', 'T' : 'A', 'G' : 'C', 'C' : 'G', 
+                            'a' : 't', 't' : 'a', 'g' : 'c', 'c' : 'g'}
+complement_dict_rna = {'A' : 'U', 'U' : 'A', 'G' : 'C', 'C' : 'G', 
+                            'a' : 'u', 'u' : 'a', 'g' : 'c', 'c' : 'g'}
 while True:
     command = input('Enter command: ')
-    available_commands = ['exit', 'transcribe', 'reverse', 'complement', 'reverse complement']
     if command not in available_commands:
         print('Invalid command. Try again!')
         continue
@@ -9,25 +13,20 @@ while True:
         break
     elif command == 'transcribe':
         seq = input('Enter sequence: ')
-        while not all([nt in ['A', 'G', 'C', 'T'] for nt in seq.upper()]):
+        while not all([nt in {'A', 'G', 'C', 'T'} for nt in seq.upper()]):
             print('Invalid DNA alphabet. Try again!')
             seq = input('Enter sequence: ')
         seq_tr = seq.replace('t', 'u').replace('T', 'U')
         print(seq_tr)
     else:
         seq = input('Enter sequence: ')
-        is_dna = all([nt in ['A', 'G', 'C', 'T'] for nt in seq.upper()])
-        is_rna = all([nt in ['A', 'G', 'C', 'U'] for nt in seq.upper()])
+        is_dna = all([nt in {'A', 'G', 'C', 'T'} for nt in seq.upper()])
+        is_rna = all([nt in {'A', 'G', 'C', 'U'} for nt in seq.upper()])
         while not (is_dna or is_rna):
             print('Invalid alphabet. Try again!')
             seq = input('Enter sequence: ')
-            is_dna = all([nt in ['A', 'G', 'C', 'T'] for nt in seq.upper()])
-            is_rna = all([nt in ['A', 'G', 'C', 'U'] for nt in seq.upper()])
-
-        complement_dict_dna = {'A' : 'T', 'T' : 'A', 'G' : 'C', 'C' : 'G', 
-                                    'a' : 't', 't' : 'a', 'g' : 'c', 'c' : 'g'}
-        complement_dict_rna = {'A' : 'U', 'U' : 'A', 'G' : 'C', 'C' : 'G', 
-                                    'a' : 'u', 'u' : 'a', 'g' : 'c', 'c' : 'g'}
+            is_dna = all([nt in {'A', 'G', 'C', 'T'} for nt in seq.upper()])
+            is_rna = all([nt in {'A', 'G', 'C', 'U'} for nt in seq.upper()])
 
         if command == 'reverse':
             seq_rev = seq[::-1]
