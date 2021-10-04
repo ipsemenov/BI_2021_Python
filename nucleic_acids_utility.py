@@ -1,8 +1,6 @@
 available_commands = {'exit', 'transcribe', 'reverse', 'complement', 'reverse complement'}
-complement_dict_dna = {'A' : 'T', 'T' : 'A', 'G' : 'C', 'C' : 'G', 
-                            'a' : 't', 't' : 'a', 'g' : 'c', 'c' : 'g'}
-complement_dict_rna = {'A' : 'U', 'U' : 'A', 'G' : 'C', 'C' : 'G', 
-                            'a' : 'u', 'u' : 'a', 'g' : 'c', 'c' : 'g'}
+complement_dict_dna = {'A': 'T', 'T': 'A', 'G': 'C', 'C': 'G', 'a': 't', 't': 'a', 'g': 'c', 'c': 'g'}
+complement_dict_rna = {'A': 'U', 'U': 'A', 'G': 'C', 'C': 'G', 'a': 'u', 'u': 'a', 'g': 'c', 'c': 'g'}
 while True:
     command = input('Enter command: ')
     if command not in available_commands:
@@ -32,13 +30,13 @@ while True:
             seq_rev = seq[::-1]
             print(seq_rev)
         elif command == 'complement':
-            if is_dna: 
+            if is_dna:
                 seq_rev = ''.join([complement_dict_dna[nt] for nt in seq])
             else:
                 seq_rev = ''.join([complement_dict_rna[nt] for nt in seq])
             print(seq_rev)
         elif command == 'reverse complement':
-            if is_dna: 
+            if is_dna:
                 seq_rev_compl = ''.join([complement_dict_dna[nt] for nt in seq])[::-1]
             else:
                 seq_rev_compl = ''.join([complement_dict_rna[nt] for nt in seq])[::-1]
