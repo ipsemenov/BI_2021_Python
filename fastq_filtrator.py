@@ -1,4 +1,4 @@
-import subprocess
+import os
 from itertools import islice
 import argparse
 
@@ -28,8 +28,8 @@ def is_in_gc_bounds(nt_seq, upper_bound=100, lower_bound=0):
     :param upper_bound: upper bound of the range of available GC content values
     :return: bool value (True/False)
     '''
-    gc_content = (nt_seq.count('C') + nt_seq.count('G')) / len(nt_seq) * 100
-    return (gc_content >= lower_bound and gc_content <= upper_bound)
+    gc_content = (nt_seq.upper().count('C') + nt_seq.upper().count('G')) / len(nt_seq) * 100
+    return lower_bound <= gc_content <= upper_bound
 
 
 @bound_modify
@@ -42,7 +42,7 @@ def is_in_length_bounds(nt_seq, upper_bound=2**32, lower_bound=0):
     :return: bool value (True/False)
     '''
     read_length = len(nt_seq)
-    return (read_length >= lower_bound and read_length <= upper_bound)
+    return lower_bound <= read_length <= upper_bound
 
 
 @bound_modify
@@ -55,7 +55,7 @@ def is_in_quality_bounds(ascii_seq, quality_threshold=0):
     '''
     phred_seq = [ord(symb)-33 for symb in ascii_seq]
     phred_mean = sum(phred_seq)/len(phred_seq)
-    return (phred_mean >= quality_threshold)
+    return phred_mean >= quality_threshold
 
 
 def check_all_conditions(nt_seq, ascii_seq, gc_bounds=None, length_bounds=None, quality_threshold=None):
@@ -120,7 +120,7 @@ def main(input_fastq, output_file_prefix, gc_bounds=None, length_bounds=None,
                     if save_filtered:
                         f_failed.write(''.join(next_n_lines))
         if not save_filtered:
-            subprocess.run('rm -r {}'.format(output_fastq_failed), shell=True)
+            os.remove(output_fastq_failed)
 
 
 if __name__ == '__main__':
