@@ -1,29 +1,26 @@
-# pain.py
+# BI_2021_Python
+Collection of tasks and projects made at [Bioinformatics institute](https://bioinf.me/en) 
 
-Following instructions are made for:
-- Ubuntu 20.04.3 LTS, focal
+### nucleic_acids_utility.py
+Utility for manipulation with nucleic acid sequences (DNA or RNA). The utility reads a command and a sequence of nucleic acid from the user, then print a result. It saves the case of letters (e.g complement AtGc - TaCg).
 
-- Python 3.9.5
+Available commands:
 
+- **exit** — complete programm execution 
+- **transcribe** — print transcribed sequence (can be implemented only to RNA)
+- **reverse** — print inverted sequence 
+- **complement** — print complementary sequence
+- **reverse complement** — print inverted complementary sequence 
 
-### Settings
-After cloning repository follow these steps:
-1. Install python 3.9
+### units_converter.py
+Program for temperature convertation into different units.
 
-        $ sudo apt install python3.9
+Available T units: celsius (C), kelvin (K), fahrenheit (F). 
 
-2. Create virtual environment:
-
-        $ virtualenv venv --python=python3.9
-
-3. Activate it:
-
-        $ source ./venv/bin/activate
-
-4. Install required packages
-
-        $ pip install -r requirements.txt
-
-5. Launch script
-
-        $ python3 pain.py
+Formulas for convertation: 
+- from **C** to **K**: T + 273.15
+- from **C** to **F**: 1.8 * T + 32
+- from **K** to **C**: T - 273.15
+- from **K** to **F**: 1.8 * (T-273.15) + 32
+- from **F** to **C**: 5/9 * (T-32)
+- from **F** to **K**: 5/9 * (T-32) + 273.15
