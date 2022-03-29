@@ -5,6 +5,14 @@ import requests
 class GenscanOutput:
 
     def __init__(self, status, cds_list, intron_list, exon_list, resp):
+        '''
+        :param status: status of response (200 - if it was successful)
+        :param cds_list: list with predicted protein sequences after splicing
+        :param intron_list: list of introns coordinates
+        :param exon_list: list of exons coordinates
+        :param resp: response from the site (after implementation of requests.get() function)
+        '''
+
         self.status = status
         self.intron_list = intron_list
         self.exon_list = exon_list
