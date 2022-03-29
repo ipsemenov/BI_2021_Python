@@ -1,8 +1,6 @@
 import pandas as pd
 import sqlite3
-import warnings
 from IPython.display import display
-warnings.simplefilter('ignore')
 
 
 # Look at our dataframes
