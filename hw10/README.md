@@ -23,3 +23,10 @@ NLRP3 maps on chromosome 1 and consists of 3108 nucleotides.
 * **exon_cutoff:** allows to find less probable exons.  Available values: 1.00, 0.5, 0.25, 0.1, 0.05, 0.02, 0.01 (default 1.00)
 * **sequence_name:** name of the target nucleotide sequence (default "")
 * **print_options:** "Predicted peptides only" (default) or "Predicted CDS and peptides"
+
+It returns an object from class `GenscanOutput` with the following attributes:
+* **status:** status of response (200 - if it was successful)
+* **intron_list:** list of introns coordinates (from the first table of results in browser version)
+* **exon_list:** list of exons coordinates (from the first table of results in browser version)
+* **cds_list:** list with predicted protein sequences after splicing (at the end of results in browser version)
+* **resp:** response from the site (after implementation of requests.get() function)
