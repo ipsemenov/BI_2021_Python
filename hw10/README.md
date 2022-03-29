@@ -30,3 +30,12 @@ It returns an object from class `GenscanOutput` with the following attributes:
 * **exon_list:** list of exons coordinates (from the first table of results in browser version)
 * **cds_list:** list with predicted protein sequences after splicing (at the end of results in browser version)
 * **resp:** response from the site (after implementation of requests.get() function)
+
+## Testing:
+Firstly, install required packages:
+    
+              $ pip install -r requirements.txt
+ 
+ Then download and run notebook `API.ipynb` or launch `API.py` with the following command:
+
+              $ python API.py
