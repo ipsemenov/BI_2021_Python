@@ -1,0 +1,2 @@
+biopython==1.79
+multiprocess==0.70.12.2
